@@ -243,7 +243,7 @@ def get_all_feedback(id, conf, ceid, fbs):
             pwd = conf.password_each[fb] if fb in conf.password_each else conf.password
             body = get_feedback(id, pwd, fb, conf.baseurl)
             json_data = parse_feedback(body, id)
-            if json_data.get('title') == 'no feedback':
+            if json_data.get('title') != 'no feedback':
                 save_json_file(f"{DATA_FOLDER}/{fb}.json", json_data)
             print(f"[Saved] {fb}")
 
